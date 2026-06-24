@@ -39,7 +39,7 @@ public class RegistrationTest {
         }
 
         // Load Test Data
-        try (FileReader dataReader = new FileReader("src/test/resources/testdata.json")) {
+        try (FileReader dataReader = new FileReader("src/test/resources/testData.json")) {
             testData = JsonParser.parseReader(dataReader).getAsJsonObject();
         }
 
