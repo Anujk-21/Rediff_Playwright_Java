@@ -1,0 +1,10 @@
+{
+  "url": "https://mail.rediff.com/cgi-bin/login.cgi",
+  "fullName": "Kamal",
+  "rediffId": "kamal1234",
+  "password": "Kamal@1234",
+  "dobDay": "20",
+  "dobMonth": "JUN",
+  "dobYear": "2000",
+  "expectedCountry": "India"
+}
