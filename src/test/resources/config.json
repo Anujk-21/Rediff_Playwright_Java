@@ -1,4 +1,4 @@
 {
   "baseUrl": "https://mail.rediff.com/cgi-bin/login.cgi",
-  "headless": true
+  "headless": false
 }

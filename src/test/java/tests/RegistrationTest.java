@@ -49,7 +49,7 @@ public class RegistrationTest {
     }
 
 
-    // 1. POSITIVE SCENARIO (Happy Path)
+    // POSITIVE SCENARIO (Happy Path)
 
     @Test
     @Story("Positive Registration")
@@ -59,18 +59,18 @@ public class RegistrationTest {
     public void testPositiveRegistrationFlow() {
         System.out.println("--- Executing Positive Scenario ---");
 
-        // --- 1. Initialize Page Objects ---
+        // Initialize Page Objects ---
         LoginPage loginPage = new LoginPage(page);
         RegisterPage registerPage = new RegisterPage(page);
 
-        // --- 2. Extract Data ---
+        // Extract Data ---
         String expectedCountry = testData.get("expectedCountry").getAsString();
 
-        // --- 3. Execute Flow on Landing Page ---
+        // Execute Flow on Landing Page ---
         loginPage.navigateTo(config.get("baseUrl").getAsString());
         loginPage.clickCreateAccount();
 
-        // --- 4. Execute Flow on Register Page ---
+        // Execute Flow on Register Page ---
         registerPage.fillPersonalDetails(
                 testData.get("fullName").getAsString(),
                 testData.get("rediffId").getAsString()
@@ -99,7 +99,7 @@ public class RegistrationTest {
         registerPage.printAvailableCountries();
         registerPage.selectCountry(expectedCountry);
 
-        // --- 5. Validations (Hard Assertions) ---
+        // Validations (Hard Assertions) ---
         String actualSelectedCountry = registerPage.getSelectedCountryText();
         System.out.println("Country selected in UI: " + actualSelectedCountry);
 
@@ -118,14 +118,13 @@ public class RegistrationTest {
 
         System.out.println("Positive Validation Passed!");
 
-        // --- 6. Screenshot ---
-        // By adding "screenshots/" it will create a folder outside src
+        // Screenshot ---
 //        registerPage.takeFullPageScreenshot("positive_scenario.png");
         attachScreenshot("positive_scenario");
     }
 
 
-    // 2. NEGATIVE SCENARIO (Blank ID Input)
+    // NEGATIVE SCENARIO
     @Test
     @Story("Negative Registration")
     @Severity(SeverityLevel.NORMAL)
@@ -140,19 +139,17 @@ public class RegistrationTest {
         loginPage.navigateTo(config.get("baseUrl").getAsString());
         loginPage.clickCreateAccount();
 
-        // 1. Intentionally pass an empty string for the Rediff ID
+        // Intentionally pass an empty string for the Rediff ID
         registerPage.fillPersonalDetails(testData.get("fullName").getAsString(), "");
 
-        // 2. Click "Check availability" directly
-        // We use page.locator directly here instead of registerPage.checkAvailabilityAndWait()
-        // because that method contains a strict wait for the radio button to appear,
-        // which would cause this negative test to fail with a timeout!
+        // Click "Check availability" directly
+
         page.locator("[value=\"Check availability\"]").click();
 
         // Wait a brief moment to let the page react
         page.waitForTimeout(1000);
 
-        // --- 3. Validations (Hard Assertions) ---
+        // Validations (Hard Assertions) ---
         boolean isSuggestionVisible = page.locator("#radio_login").isVisible();
 
         // Hard assert that the radio buttons did NOT show up
@@ -163,14 +160,13 @@ public class RegistrationTest {
 
         System.out.println("Negative Validation Passed!");
 
-        // --- 4. Screenshot ---
+        // Screenshot ---
 //        registerPage.takeFullPageScreenshot("negative_scenario.png");
         attachScreenshot("negative_scenario");
     }
 
     // Attaches a saved screenshot file to the Allure report.
-    // Adjust the base path if your takeFullPageScreenshot saves elsewhere.
-    // Captures the current page and attaches it straight to the Allure report.
+
     @io.qameta.allure.Attachment(value = "{name}", type = "image/png")
     private byte[] attachScreenshot(String name) {
         return page.screenshot(new com.microsoft.playwright.Page.ScreenshotOptions().setFullPage(true));

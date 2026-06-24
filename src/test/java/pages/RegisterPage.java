@@ -28,8 +28,7 @@ public class RegisterPage {
         Locator checkBtn = page.locator(RediffLocators.CHECK_AVAILABILITY_BTN);
 
         System.out.println("Explicit Wait: Waiting for background scripts to finish loading...");
-        // 1. Wait until there are no active network connections for at least 500ms.
-        // This guarantees Rediff's messy JavaScript is fully attached to the page.
+        // 1. Wait until there are no active network connections for at least 500ms.       // This guarantees Rediff's messy JavaScript is fully attached to the page.
         page.waitForLoadState(com.microsoft.playwright.options.LoadState.NETWORKIDLE);
 
         // 2. Explicitly wait for the button itself to be fully visible and ready
@@ -89,7 +88,7 @@ public class RegisterPage {
     }
 
     public void takeFullPageScreenshot(String fileName) {
-        // Paths.get("screenshots", fileName) places it in ProjectRoot/screenshots/
+
         java.nio.file.Path screenshotPath = java.nio.file.Paths.get("screenshots", fileName);
 
         System.out.println("Taking full page screenshot...");

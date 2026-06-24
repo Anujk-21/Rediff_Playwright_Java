@@ -1,10 +1,10 @@
 package utils;
 
 public class RediffLocators {
-    // --- Landing Page / Login Page Locators ---
+    // Login Page Locators ---
     public static final String CREATE_ACCOUNT_LINK = "text=Get a new Rediffmail ID"; // Or 'text=Get a new Rediffmail I'
 
-    // --- Create New Account / Register Page Locators ---
+    // Register Page Locators ---
     public static final String FULL_NAME_INPUT = "[placeholder=\"Enter your full name\"]";
     public static final String REDIFF_ID_INPUT = "[placeholder=\"Enter Rediffmail ID\"]";
     public static final String CHECK_AVAILABILITY_BTN = "[value=\"Check availability\"]";
